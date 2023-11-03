@@ -1,2 +1,32 @@
 # SmartAuth
 BlockChain based (ETH) product verification system
+This Project starts with the intension to try an alternative use case of block chain technology.
+
+In a nutshell...
+Using Ethereum Smart Contracts to verify a QR code (QR code is genarated based on Eth address).
+
+So here is how I setup it.
+
+Fireup a latest ubuntu server ( we can have many nodes but for now we stay on one node)
+we are going to run a private etherum blockchin in our network.so we use official go implementation of Etherum protocol
+https://geth.ethereum.org/
+
+No Fancy System requirement is required for now.
+
+![image](https://github.com/Sx3/SmartAuth/assets/3599933/d3ef943e-0c7a-428e-9bdc-596c64850357)
+
+Use following commands to install on ubuntu (https://geth.ethereum.org/docs/getting-started/installing-geth) 
+
+sudo add-apt-repository -y ppa:ethereum/ethereum
+
+sudo apt-get update
+
+sudo apt-get install ethereum
+
+Then connect it using a putty client. so that we can run commands easily
+
+
+
+
+
+
