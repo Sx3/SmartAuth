@@ -25,6 +25,13 @@ sudo apt-get install ethereum
 
 Then connect it using a putty client. so that we can run commands easily
 
+Now we are going to create two ETH accounts on our private eth server.
+create a folder inside the ubuntu vm and cd into it.then run the following command.
+
+geth --datadir ./data account new
+
+![image](https://github.com/Sx3/SmartAuth/assets/3599933/81daf530-ba82-4751-9721-8e9dc626ec84)
+
 
 
 
