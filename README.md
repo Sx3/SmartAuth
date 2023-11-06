@@ -32,6 +32,12 @@ geth --datadir ./data account new
 
 ![image](https://github.com/Sx3/SmartAuth/assets/3599933/81daf530-ba82-4751-9721-8e9dc626ec84)
 
+create two accounts and NOTE down the Public address and the password.
+
+0x6c3a2912fffcbC24C9aFFaFF0a6f247F3A7eBb56
+0x00288CcC644370619e272220D0bAaA7B9C84d11F
+
+password 1234 :)
 
 
 
