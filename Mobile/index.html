@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyper Solution Scanner</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      h3 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      #preview {
+        max-width: 100%;
+        margin: auto;
+        display: block;
+      }
+    </style>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+  </head>
+  <body>
+    <h1>Hyper Solution Scanner</h1>
+    <h3>Please Scan the product to verify</h3>
+    <video id="preview"></video>
+    <script>
+      const contractAbi = [
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_specs",
+              type: "string",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "getName",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getSpecs",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ];
+
+      const web3 = new Web3(
+        new Web3.providers.HttpProvider("http://192.168.1.64:8545")
+      );
+
+      let scanner = new Instascan.Scanner({
+        video: document.getElementById("preview"),
+      });
+      scanner.addListener("scan", function (content) {
+        alert("Scanned: " + content);
+        getData(content);
+      });
+      Instascan.Camera.getCameras()
+        .then(function (cameras) {
+          if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+          } else {
+            console.error("No cameras found.");
+          }
+        })
+        .catch(function (e) {
+          console.error(e);
+        });
+
+      async function getData(add) {
+        try {
+          // create a reference to the contract and the function
+          const contractAddress = add;
+          const contract = new web3.eth.Contract(contractAbi, contractAddress);
+
+          // Get the contract state
+          contract.methods
+            .getName()
+            .call()
+            .then((name) => {
+              console.log(`Name: ${name}`);
+              return contract.methods
+                .getSpecs()
+                .call()
+                .then((specs) => {
+                  console.log(`Specs: ${specs}`);
+                  alert(`Name: ${name}\nSpecs: ${specs}`);
+                });
+            })
+            .catch((error) => {
+              console.log(`Error getting contract state: ${error}`);
+              alert(error);
+            });
+        } catch (error) {
+          console.log(`Error: ${error}`);
+          alert(error.message);
+        }
+      }
+    </script>
+  </body>
+</html>
