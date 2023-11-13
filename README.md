@@ -98,3 +98,12 @@ eth.accounts
 ![image](https://github.com/Sx3/SmartAuth/assets/3599933/aad5a393-1c60-415c-a43c-8f7fe2d1bbbd)  
 
 Now we have a functioning private eth server to test our applicaion.
+
+
+
+https://github.com/Sx3/SmartAuth/assets/3599933/a329a908-48bd-4deb-bcb2-abe650e8b28b
+
+
+
+
+
